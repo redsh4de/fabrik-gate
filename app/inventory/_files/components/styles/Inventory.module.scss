@@ -1,0 +1,74 @@
+.inventoryContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #EFEFEF;
+
+    .title {
+        padding: 2em 1.5em;
+        font-weight: bold;
+        border-bottom: inherit;
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    .sectionOne {
+        padding: 3em 1.5em;
+        display: flex;
+        flex-direction: column;
+        border-bottom: inherit;
+        flex: 1;
+        justify-content: space-around;
+        gap: 3em;
+    }
+
+    .sectionTwo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5em;
+    }
+
+    .sectionOne,
+    .sectionTwo {
+        h3 {
+            margin-bottom: 1em;
+        }
+    }
+
+    .inventoryInfo,
+    .stakingInfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+
+        .titleContainer {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+
+            .image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #E6E6E6;
+                border-radius: 50%;
+                height: 3em;
+                aspect-ratio: 1/1;
+            }
+        }
+    }
+}
+
+.balanceIndicator {
+    display: inline-block;
+    border: 1px solid #E6E6E6;
+    border-radius: 2px;
+    padding: 1em;
+    color: #797F88;
+    flex: 1;
+
+    span {
+        font-weight: 500;
+    }
+}

@@ -1,0 +1,32 @@
+%button-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 55px;
+    padding: 1em 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+    height: fit-content;
+
+    &:hover {
+        background-color: #d6d9cf;
+    }
+}
+
+.button {
+    @extend %button-style;
+    border: 1px solid #E0E1DA;
+    color: #8E8E8E;
+}
+
+.buttonDark {
+    @extend .button;
+    border: unset;
+    background-color: black;
+    color: white;
+
+    &:hover {
+        background-color: rgb(36, 36, 36);
+    }
+}

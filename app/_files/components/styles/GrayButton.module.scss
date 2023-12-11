@@ -1,0 +1,11 @@
+.container {
+    background-color: #E4EDEC;
+    text-align: center;
+    padding: 1em 1.5em;
+    border-radius: 2px;
+    font-weight: 500;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

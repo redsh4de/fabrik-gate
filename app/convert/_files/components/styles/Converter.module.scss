@@ -1,0 +1,52 @@
+.container {
+    border: 1px solid #EFEFEF;
+}
+
+.mainTitle {
+    padding: 2rem 1.5rem;
+    border-bottom: inherit;
+
+    span {
+        font-weight: 500;
+        font-size: 20px;
+    }
+}
+
+.menu {
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 3rem;
+
+    .title {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 1rem;
+    }
+}
+
+.balanceIndicator {
+    display: inline-block;
+    border: 1px solid #E6E6E6;
+    border-radius: 2px;
+    padding: 1em;
+    color: #797F88; 
+    flex: 1;
+
+    span {
+        font-weight: 500;
+    }
+}
+
+.grayButton {
+    background-color: #E4EDEC;
+    text-align: center;
+    padding: 1em 2em;
+    border-radius: 2px;
+    font-weight: 500;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
