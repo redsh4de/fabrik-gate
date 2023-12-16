@@ -2,9 +2,23 @@ import ConnectButton from "@/app/_files/components/ConnectButton";
 import styles from "./styles/Inventory.module.scss";
 import { useAccount } from "wagmi";
 import GrayButton from "@/app/_files/components/GrayButton";
+import useGetHTBalance from "../hooks/useGetHTBalance";
+import useGetHTPerDay from "../hooks/useGetHTPerDay";
+import useGetStakedModules from "../hooks/useGetStakedModules";
+import useGetPendingTokens from "../hooks/useGetPendingTokens";
+
+import useClaimPendingTokens from "../hooks/useClaimPendingTokens";
+import Link from "next/link";
 
 const InventoryModule = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
+
+  const { data: htBalance } = useGetHTBalance(address, true);
+  const { data: htPerDay} = useGetHTPerDay(address, true);
+  const { count: stakedModules } = useGetStakedModules(address);
+  const { data: pendingTokens } = useGetPendingTokens(address, true);
+
+  const { write: writeClaimPendingTokens } = useClaimPendingTokens(() => {})
 
   return (
     <div className={styles.inventoryContainer}>
@@ -16,9 +30,9 @@ const InventoryModule = () => {
               <h3>Balance</h3>
               <div style={{ display: "flex", gap: "0.5em" }}>
                 <div className={styles.balanceIndicator}>
-                  <span>HT 3,000,000</span>
+                  <span>HT {htBalance}</span>
                 </div>
-                <GrayButton>View Marketplace</GrayButton>
+                <Link href="/marketplace"><GrayButton>View Marketplace</GrayButton></Link>
               </div>
             </div>
             <div className={styles.element}>
@@ -37,7 +51,7 @@ const InventoryModule = () => {
                     </div>
                     <span>Staked Balance</span>
                   </div>
-                  <span>26 Modules</span>
+                  <span>{stakedModules} Modules</span>
                 </div>
                 <div className={styles.inventoryInfo}>
                   <div className={styles.titleContainer}>
@@ -46,43 +60,20 @@ const InventoryModule = () => {
                     </div>
                     <span>Daily Rate</span>
                   </div>
-                  <span>10400 HT / day</span>
+                  <span>{htPerDay} HT / day</span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.sectionTwo}>
-            <h3>Staking Stage</h3>
-            <div style={{ display: "flex", gap: "1em", paddingBottom: "1em" }}>
-              <div className={styles.balanceIndicator}>
-                <span>40000 / 50000</span>
-              </div>
-              <GrayButton>Claim Reward</GrayButton>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75em",
-              }}
-            >
-              <div className={styles.stakingInfo}>
-                <div className={styles.titleContainer}>
-                  <div className={styles.image}>
-                    <img src="svg/circle.svg" />
+                <div className={styles.inventoryInfo}>
+                  <div className={styles.titleContainer}>
+                    <div className={styles.image}>
+                      <img src="svg/dualArrows.svg" />
+                    </div>
+                    <span>Pending Tokens</span>
                   </div>
-                  <span>Reward System</span>
-                </div>
-                <span>View Here</span>
-              </div>
-              <div className={styles.stakingInfo}>
-                <div className={styles.titleContainer}>
-                  <div className={styles.image}>
-                    <img src="svg/dualArrows.svg" />
+                  <div style={{display: 'flex', gap: '1em', alignItems: 'center'}}>
+                    <span>{pendingTokens} HT</span>
+                    <GrayButton onClick={() => writeClaimPendingTokens?.()}>Claim</GrayButton>
                   </div>
-                  <span>Claim Pending Tokens</span>
                 </div>
-                <span>Claim</span>
               </div>
             </div>
           </div>

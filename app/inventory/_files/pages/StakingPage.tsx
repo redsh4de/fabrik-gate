@@ -1,20 +1,32 @@
 import Button from '../../../_files/components/SiteButton';
 import StakingModule from '../components/StakingModule';
+import useGetHTPerDay from '../hooks/useGetHTPerDay';
 
 import styles from './styles/pages.module.scss';
+import { useState } from 'react';
+
+import { useAccount } from 'wagmi';
+
 
 interface IStakingPageProps {
     switchPage: () => void;
 }
 
 const StakingPage = ({ switchPage }: IStakingPageProps) => {
+    const [stakedModules, setStakedModules] = useState<number>(0);
+    const [htPerDay, setHTPerDay] = useState<number>(0);
+
+    const { isConnected } = useAccount();
+
     return (
         <>
             <div className={styles.leftSide} style={{justifyContent: 'space-between'}}>
                 <div className={styles.stakingStats}>
-                    <span>5 Staked Modules.</span>
-                    <br/>
-                    <span style={{color: "#B3BDBC"}}>10400 HT per Day.</span>
+                    {isConnected && <>
+                        <span>{stakedModules} Staked Modules.</span>
+                        <br/>
+                        <span style={{color: "#B3BDBC"}}>{htPerDay} HT per Day.</span>
+                    </>}
                 </div>
                 <div style={{display: 'flex', gap: '1.5em', flexDirection: 'column'}}>
                     <Button bg="#E4EDEC" fg='#000000'><b>Staking</b></Button>
@@ -27,7 +39,7 @@ const StakingPage = ({ switchPage }: IStakingPageProps) => {
                 </div>   
             </div>
             <div className={styles.rightSide}>
-                <StakingModule/>
+                <StakingModule setHTPerDay={setHTPerDay} setStakedModuleCount={setStakedModules}/>
             </div>
         </>
     )

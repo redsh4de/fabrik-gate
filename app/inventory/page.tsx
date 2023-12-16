@@ -3,21 +3,26 @@ import styles from './page.module.scss';
 import Header from '../_files/components/Header';
 import InventoryPage from './_files/pages/InventoryPage';
 import StakingPage from './_files/pages/StakingPage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Inventory = () => {
-    const [isInventoryPage, setIsInventoryPage] = useState(true);
+    const [isStakingPage, setIsStakingPage] = useState(false);
+    const [isReady, setIsReady] = useState(false);
 
     const switchPage = () => {
-        setIsInventoryPage(!isInventoryPage);
+        setIsStakingPage(!isStakingPage);
     }
 
+    useEffect(() => {
+        setIsReady(true);
+    }, [])
+
     return (
-        <main className={styles.main}>
+        isReady && <main className={styles.main}>
             <Header/>
             <div className={styles.pageContent}>
-                {isInventoryPage ? <InventoryPage switchPage={switchPage}/> : <StakingPage switchPage={switchPage}/>}
+                {isStakingPage ? <StakingPage switchPage={switchPage}/> : <InventoryPage switchPage={switchPage}/>}
             </div>
         </main>
     )

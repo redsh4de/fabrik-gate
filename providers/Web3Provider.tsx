@@ -3,7 +3,7 @@ import { WagmiConfig, createConfig, mainnet } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import { hardhat, sepolia } from "wagmi/chains";
 
-const chains = [hardhat, sepolia, mainnet];
+const chains = [mainnet];
  
 const config = createConfig(
   getDefaultConfig({
