@@ -8,7 +8,7 @@ interface IUseGetHTPerDayHook {
 }
 
 const useGetHTPerDay = (address: `0x${string}` | undefined, formatted: boolean) => {
-    const [data, setData] = useState<number>(0);
+    const [data, setData] = useState<number | string>(0);
 
     const { data: rawData } = useContractRead({
         address: stakingContract.address as `0x${string}`,

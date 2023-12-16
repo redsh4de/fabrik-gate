@@ -34,7 +34,7 @@ const useGetUnstakedModules = (address: `0x${string}` | undefined) => {
 
 
     return <IUseGetUnstakedModulesHook> {
-        data: data ?? [] as number[]
+        data: data ?? [ ] as number[]
     }
 }
 
