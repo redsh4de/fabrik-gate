@@ -80,7 +80,7 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
                                     className={styles.gridItem}
                                     key={`stkd${index}`}
                                     onClick={gridItemClick(item, true)}
-                                    style={{background: selectedObjects.ids.includes(item) ? "#F2F2F2" : "#FFFFFF"}}
+                                    style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
                                 >
                                     <span className={styles.moduleTitle}>Module {item}</span>
                                     <div className={styles.stakingStatus}>Staking</div>
@@ -95,7 +95,7 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
                                     className={`${styles.gridItem} ${styles.unstakedGridItem}`}
                                     key={`ustkd${index}`}
                                     onClick={gridItemClick(item, false)}
-                                    style={{background: selectedObjects.ids.includes(item) ? "#F2F2F2" : "#FFFFFF"}}
+                                    style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
                                 >
                                     <span className={styles.moduleTitle}>Module {item}</span>
                                     <div className={styles.stakingStatus}>Not Staked</div>
