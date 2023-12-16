@@ -42,5 +42,7 @@
 
     .pageContent {
         padding-bottom: 2em;
+        flex-direction: column-reverse;
+        margin-top: 10em;
     }
 }

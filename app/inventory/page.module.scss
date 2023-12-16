@@ -42,7 +42,8 @@
   }
 
   .pageContent {
-    margin-top: 5em;
+    margin-top: 10em;
     padding-bottom: 2em;
+    flex-direction: column-reverse;
   }
 }
