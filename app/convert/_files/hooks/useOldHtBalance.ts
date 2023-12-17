@@ -1,17 +1,16 @@
-import { useAccount } from 'wagmi';
 import { useContractRead } from 'wagmi';
+import { useEffect, useState } from 'react';
 
 import oldHTContract from '@/contracts/haustoken/old.json';
 
 interface IUseOldHTBalance {
   data: number;
-  loading: boolean;
 }
 
-const useOldHTBalance = () =>  {
-  const { address } = useAccount();
+const useOldHTBalance = (address: `0x${string}` | undefined) =>  {
+  const [data, setData] = useState<number>(0);
 
-  const { data, isLoading } = useContractRead({
+  const { data: rawData } = useContractRead({
     address: oldHTContract.address as `0x${string}`,
     abi: oldHTContract.abi,
     watch: true,
@@ -19,17 +18,12 @@ const useOldHTBalance = () =>  {
     args: [address],
   });
 
-  if (data === undefined) {
-    return <IUseOldHTBalance>{
-      loading: isLoading,
-      data: 0,
-    };
-  }
+  useEffect(() => {
+    if (rawData) setData(Number(rawData as bigint / BigInt(1e18)))
+  }, [rawData])
 
   return <IUseOldHTBalance>{
-    loading: isLoading,
-    // @ts-ignore
-    data: Number(data / BigInt(1e18)),
+    data: data ?? 0,
   };
 }
 

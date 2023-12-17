@@ -1,5 +1,5 @@
-import { useAccount } from 'wagmi';
 import { useContractRead } from 'wagmi';
+import { useEffect, useState } from 'react';
 
 import oldHTContract from '@/contracts/haustoken/old.json';
 import HTConverterContract from '@/contracts/HTConverter.json';
@@ -12,10 +12,10 @@ interface IUseOldHTAllowanceProps {
 
 const INT_MAX = BigInt(2) ** BigInt(256) - BigInt(1);
 
-const useOldHTAllowance = () =>  {
-  const { address } = useAccount();
+const useOldHTAllowance = (address: `0x${string}` | undefined) =>  {
+  const [data, setData] = useState<number>(0);
 
-  const { data, isLoading } = useContractRead({
+  const { data: rawData } = useContractRead({
     address: oldHTContract.address as `0x${string}`,
     abi: oldHTContract.abi,
     watch: true,
@@ -23,19 +23,13 @@ const useOldHTAllowance = () =>  {
     args: [address, HTConverterContract.address],
   });
 
-  if (data === undefined) {
-    return <IUseOldHTAllowanceProps>{
-      loading: isLoading,
-      isMax: false,
-      data: 0,
-    };
-  }
+  useEffect(() => {
+    if (rawData) setData(Number(rawData as bigint))
+  }, [rawData])
 
   return <IUseOldHTAllowanceProps>{
-    loading: isLoading,
-    isMax: data === INT_MAX,
-    // @ts-ignore
-    data: Number(data / BigInt(1e18)),
+    isMax: rawData === INT_MAX,
+    data: data ?? 0
   };
 }
 

@@ -1,4 +1,3 @@
-'use client'
 import ConnectButton from "@/app/_files/components/ConnectButton";
 import styles from "./styles/Staking.module.scss";
 import { useAccount } from "wagmi";

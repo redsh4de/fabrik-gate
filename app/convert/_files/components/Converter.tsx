@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link';
 import styles from './styles/Converter.module.scss';
 import GrayButton from '@/app/_files/components/GrayButton';
@@ -11,11 +10,12 @@ import useConverterApproveMax from '../hooks/useConverterApproveMax';
 import { useAccount } from 'wagmi';
 
 const Converter = () => {
-    const { isConnected } = useAccount();
-    const { data: oldHTBalance } = useOldHTBalance();
-    const { isMax: isMaxAllowance } = useOldHTAllowance();
+    const { isConnected, address } = useAccount();
+    const { data: oldHTBalance } = useOldHTBalance(address);
+    const { isMax: isMaxAllowance } = useOldHTAllowance(address);
 
     const { write: approveMax } = useConverterApproveMax();
+
 
     return (
         <main className={styles.container}>
@@ -58,13 +58,10 @@ const Converter = () => {
                         </p>
                     </>
                 ) : (
-                    <>
-                        <div style={{display: "flex", justifyContent: "center"}}>
-                            <ConnectButton/>
-                        </div>
-                    </>
+                    <div style={{display: "flex", justifyContent: "center"}}>
+                        <ConnectButton/>
+                    </div>
                 )}
-                
             </div>
         </main>
     );
