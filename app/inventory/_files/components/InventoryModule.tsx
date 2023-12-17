@@ -65,7 +65,7 @@ const InventoryModule = () => {
                 <div className={styles.inventoryInfo}>
                   <div className={styles.titleContainer}>
                     <div className={styles.image}>
-                      <img src="svg/dualArrows.svg" />
+                      <img src="svg/dualArrows.svg" alt="Pending Rewards"/>
                     </div>
                     <span>Pending Tokens</span>
                   </div>

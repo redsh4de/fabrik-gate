@@ -17,7 +17,7 @@ export default function Home() {
             <Link href="/inventory"><Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">Launch App</Button></Link>
         </div>
         <div style={{flex: 1, justifyContent: "center", alignItems: "center", display: "flex", background: "#F9F9F9", margin: "5em 0"}}>
-            <img src="images/photo.png"/>
+            <img src="images/photo.png" alt="Image"/>
         </div>
       </div>
     </main>

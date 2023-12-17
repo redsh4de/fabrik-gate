@@ -72,7 +72,7 @@ const Header = () => {
                 </div>
 
                 <div className={styles.hamburger} onClick={toggleMenu}>
-                    <img src="svg/hamburger.svg"/>
+                    <img src="svg/hamburger.svg" alt="Hamburger"/>
                 </div>
             </div>
             {(isMobile && isMenuOpen) && (

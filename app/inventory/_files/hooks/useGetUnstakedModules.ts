@@ -24,9 +24,9 @@ const useGetUnstakedModules = (address: `0x${string}` | undefined) => {
         const nfts = await alchemy.nft.getNftsForOwner(address, {
             contractAddresses: [hausPhaseContract.address]
         }) as any
+        const tokenIDs = nfts.ownedNfts.map((nft: any) => nft.tokenId)
 
-        setData(nfts.ownedNfts)
-        console.log(nfts.ownedNfts)
+        setData(tokenIDs)
     }
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const useGetUnstakedModules = (address: `0x${string}` | undefined) => {
 
 
     return <IUseGetUnstakedModulesHook> {
-        data: data ?? [ ] as number[],
+        data: data ?? [] as number[],
         refetch: fetchData
     }
 }
