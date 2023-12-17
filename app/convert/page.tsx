@@ -23,7 +23,7 @@ const Convert = () => {
                     <h1>Convert your tokens.<br/>From old to new.</h1>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</p>
                     <div style={{display: 'flex', gap: '0.5em'}}>
-                    <Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">View Marketplace</Button> 
+                        <Link href="/marketplace"><Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">View Marketplace</Button> </Link>
                         <Link href="/inventory"><Button bg="#000000" fg='#FFFFFF'>View Inventory</Button></Link>
                     </div>
                 </div>
