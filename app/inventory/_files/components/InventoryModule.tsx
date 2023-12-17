@@ -14,7 +14,7 @@ const InventoryModule = () => {
   const { isConnected, address } = useAccount();
 
   const { data: htBalance } = useGetHTBalance(address, true);
-  const { data: htPerDay} = useGetHTPerDay(address, true);
+  const { data: htPerDay} = useGetHTPerDay(address);
   const { count: stakedModules } = useGetStakedModules(address);
   const { data: pendingTokens } = useGetPendingTokens(address, true);
 

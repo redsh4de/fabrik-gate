@@ -3,6 +3,8 @@
     flex-direction: column;
     border: 1px solid #EFEFEF;
     flex: 1;
+    max-height: 100%;
+    position: relative;
 }
 
 .header {
@@ -19,6 +21,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1px;
+    overflow-y: auto;
 
     .gridItem {
         display: flex;
@@ -62,10 +65,13 @@
 }
 
 .footer {
-    max-height: fit-content;
-    margin-top: auto;
-    align-self: flex-end;
-    padding: 2em;
+    flex: 1;
+    padding: 1em;
+    min-height: 5em;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
 
     .stakingButton {
         background-color: black;

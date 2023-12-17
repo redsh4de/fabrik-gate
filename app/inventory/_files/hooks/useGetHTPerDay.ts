@@ -4,26 +4,28 @@ import { ethers } from "ethers";
 import stakingContract from "@/contracts/staking.json"
 
 interface IUseGetHTPerDayHook {
-    data: number | string
+    data: number
 }
 
-const useGetHTPerDay = (address: `0x${string}` | undefined, formatted: boolean) => {
+const useGetHTPerDay = (address: `0x${string}` | undefined) => {
     const [data, setData] = useState<number | string>(0);
 
     const { data: rawData } = useContractRead({
         address: stakingContract.address as `0x${string}`,
         abi: stakingContract.abi,
         functionName: "getUserRewardRate",
-        args: [address],
+        args: ["0x402FD4F56EB547c217a0Eb35958B174fF231d7bF"],
         watch: true,
     });
 
     useEffect(() => {
-        if (rawData) setData(parseFloat(ethers.formatUnits(rawData as bigint, 18)))
+        if (rawData) {
+            setData(Number(rawData as bigint / BigInt(1e18)))
+        }
     }, [rawData])
 
     return <IUseGetHTPerDayHook>{
-        data: data ? (formatted ? data.toLocaleString('en', { maximumFractionDigits: 2}) : data) : 0
+        data: data ?? 0
     }
 }
 

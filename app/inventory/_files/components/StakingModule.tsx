@@ -27,7 +27,7 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
     const { data: staked } = useGetStakedModules(address);
     const { data: unstaked } = useGetUnstakedModules(address);
 
-    const { data: htPerDay } = useGetHTPerDay(address, true);
+    const { data: htPerDay } = useGetHTPerDay(address);
 
     const { write: writeUnstakeModules } = useUnstakeModules(selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
     const { write: writeStakeModules} = useStakeModules(!selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
@@ -124,8 +124,7 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
                   <ConnectButton />
                 </div>
               </>
-            )}
-            
+            )}   
         </main>
     )
 }
