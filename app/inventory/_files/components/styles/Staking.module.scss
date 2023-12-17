@@ -71,11 +71,13 @@
 .footer {
     padding: 1em;
     min-height: 5em;
+    width: 100%;
     align-items: center;
     display: flex;
     justify-content: flex-end;
     background-color: white;
     align-self: flex-end;
+    border-top: inherit;
 
     .stakingButton {
         background-color: black;
