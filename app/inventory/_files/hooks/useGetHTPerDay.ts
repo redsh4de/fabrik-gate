@@ -1,13 +1,12 @@
 import { useContractRead } from "wagmi"
 import { useState, useEffect } from "react"
-import { ethers } from "ethers";
 import stakingContract from "@/contracts/staking.json"
 
 interface IUseGetHTPerDayHook {
     data: number
 }
 
-const useGetHTPerDay = (address: `0x${string}` | undefined) => {
+const useGetHTPerDay = (address: `0x${string}` | undefined): IUseGetHTPerDayHook => {
     const [data, setData] = useState<number | string>(0);
 
     const { data: rawData } = useContractRead({

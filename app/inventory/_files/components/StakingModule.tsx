@@ -23,7 +23,7 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
 
     const { isConnected, address } = useAccount();
 
-    const { data: staked,  } = useGetStakedModules(address);
+    const { data: staked } = useGetStakedModules(address);
     const { data: unstaked, refetch: unstaked_refetch } = useGetUnstakedModules(address);
 
     const { data: htPerDay } = useGetHTPerDay(address);

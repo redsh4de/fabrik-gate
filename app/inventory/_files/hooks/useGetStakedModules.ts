@@ -8,7 +8,7 @@ interface IUseGetStakedModulesHook {
     count: number
 }
 
-const useGetStakedModules = (address: `0x${string}` | undefined) => {
+const useGetStakedModules = (address: `0x${string}` | undefined): IUseGetStakedModulesHook => {
     const [data, setData] = useState<number[]>([])
 
     const { data: rawData } = useContractRead({
