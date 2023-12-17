@@ -15,7 +15,7 @@ const useGetStakedModules = (address: `0x${string}` | undefined) => {
         address: stakingContract.address as `0x${string}`,
         abi: stakingContract.abi,
         functionName: "getUserStakedTokens",
-        args: ["0x402FD4F56EB547c217a0Eb35958B174fF231d7bF"],
+        args: [address],
         watch: true,
     });
 

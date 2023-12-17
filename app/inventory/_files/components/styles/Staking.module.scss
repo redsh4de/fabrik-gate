@@ -17,11 +17,15 @@
     gap: 1em;
 }
 
+.gridContainer {
+    flex: 1;
+    overflow-y: auto;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1px;
-    overflow-y: auto;
 
     .gridItem {
         display: flex;
@@ -65,13 +69,13 @@
 }
 
 .footer {
-    flex: 1;
     padding: 1em;
     min-height: 5em;
     align-items: center;
     display: flex;
     justify-content: flex-end;
     background-color: white;
+    align-self: flex-end;
 
     .stakingButton {
         background-color: black;

@@ -72,38 +72,41 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
             </div>
             {isConnected ? (
                 <>
-                    <div className={styles.grid}>
-                    {
-                        staked?.map((item, index) => {
-                            return (
-                                <div
-                                    className={styles.gridItem}
-                                    key={`stkd${index}`}
-                                    onClick={gridItemClick(item, true)}
-                                    style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
-                                >
-                                    <span className={styles.moduleTitle}>Module {item}</span>
-                                    <div className={styles.stakingStatus}>Staking</div>
-                                </div>
-                            )
-                        })
-                    }
-                    {
-                        unstaked?.map((item, index) => {
-                            return (
-                                <div
-                                    className={`${styles.gridItem} ${styles.unstakedGridItem}`}
-                                    key={`ustkd${index}`}
-                                    onClick={gridItemClick(item, false)}
-                                    style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
-                                >
-                                    <span className={styles.moduleTitle}>Module {item}</span>
-                                    <div className={styles.stakingStatus}>Not Staked</div>
-                                </div>
-                            )
-                        })
-                    }
+                    <div className={styles.gridContainer}>
+                        <div className={styles.grid}>
+                        {
+                            staked?.map((item, index) => {
+                                return (
+                                    <div
+                                        className={styles.gridItem}
+                                        key={`stkd${index}`}
+                                        onClick={gridItemClick(item, true)}
+                                        style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
+                                    >
+                                        <span className={styles.moduleTitle}>Module {item}</span>
+                                        <div className={styles.stakingStatus}>Staking</div>
+                                    </div>
+                                )
+                            })
+                        }
+                        {
+                            unstaked?.map((item, index) => {
+                                return (
+                                    <div
+                                        className={`${styles.gridItem} ${styles.unstakedGridItem}`}
+                                        key={`ustkd${index}`}
+                                        onClick={gridItemClick(item, false)}
+                                        style={{background: selectedObjects.ids.includes(item) ? "#E4EDEC" : "#FFFFFF"}}
+                                    >
+                                        <span className={styles.moduleTitle}>Module {item}</span>
+                                        <div className={styles.stakingStatus}>Not Staked</div>
+                                    </div>
+                                )
+                            })
+                        }
+                        </div>
                     </div>
+                    
                     <div className={styles.footer}>
                         {selectedObjects.ids.length > 0 && <div className={styles.stakingButton} onClick={() => stakeButtonClick()}>
                             {selectedObjects.isStaked ? "Unstake" : "Stake"} selected ({selectedObjects.ids.length})
