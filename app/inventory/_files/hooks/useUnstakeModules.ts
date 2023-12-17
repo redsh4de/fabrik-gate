@@ -1,4 +1,4 @@
-import { usePrepareContractWrite, useContractWrite } from "wagmi"
+import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from "wagmi"
 
 import stakingContract from "@/contracts/staking.json"
 

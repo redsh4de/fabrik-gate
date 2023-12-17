@@ -1,6 +1,6 @@
 import ConnectButton from "@/app/_files/components/ConnectButton";
 import styles from "./styles/Staking.module.scss";
-import { useAccount } from "wagmi";
+import { useAccount, useWaitForTransaction } from "wagmi";
 import { useEffect, useState } from "react";
 
 import useGetUnstakedModules from "../hooks/useGetUnstakedModules";
@@ -23,13 +23,26 @@ const StakingModule = ({ setStakedModuleCount, setHTPerDay }: IStakingModuleProp
 
     const { isConnected, address } = useAccount();
 
-    const { data: staked } = useGetStakedModules(address);
-    const { data: unstaked } = useGetUnstakedModules(address);
+    const { data: staked,  } = useGetStakedModules(address);
+    const { data: unstaked, refetch: unstaked_refetch } = useGetUnstakedModules(address);
 
     const { data: htPerDay } = useGetHTPerDay(address);
 
-    const { write: writeUnstakeModules } = useUnstakeModules(selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
-    const { write: writeStakeModules} = useStakeModules(!selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
+    const { data: data_unstakeModules, write: writeUnstakeModules } = useUnstakeModules(selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
+    useWaitForTransaction({
+        hash: data_unstakeModules?.hash,
+        onSettled() {
+            unstaked_refetch()
+        }
+    })
+
+    const { data: data_stakeModules, write: writeStakeModules} = useStakeModules(!selectedObjects.isStaked ? selectedObjects.ids : [], () => {});
+    useWaitForTransaction({
+        hash: data_stakeModules?.hash,
+        onSettled() {
+            unstaked_refetch()
+        }
+    })
     
     const gridItemClick = (id: number, staked: boolean) => () => {
         setSelectedObjects(prevObjects => {

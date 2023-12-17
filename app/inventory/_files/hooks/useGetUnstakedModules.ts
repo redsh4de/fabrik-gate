@@ -12,6 +12,7 @@ const alchemy = new Alchemy(alchemyConfig);
 
 interface IUseGetUnstakedModulesHook {
     data: number[]
+    refetch: () => void
 }
 
 const useGetUnstakedModules = (address: `0x${string}` | undefined) => {
@@ -34,7 +35,8 @@ const useGetUnstakedModules = (address: `0x${string}` | undefined) => {
 
 
     return <IUseGetUnstakedModulesHook> {
-        data: data ?? [ ] as number[]
+        data: data ?? [ ] as number[],
+        refetch: fetchData
     }
 }
 
