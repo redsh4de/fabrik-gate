@@ -16,6 +16,7 @@
   flex-direction: row;
   height: 100%;
   gap: 8em;
+  width: 100%;
 }
 
 @media screen and (max-width: 1360px) {
@@ -26,7 +27,7 @@
   .pageContent {
     gap: unset;
     flex-direction: column-reverse;
-    margin-top: 12em;
+    margin-top: 6em;
     padding-bottom: 2em;
   }
 }

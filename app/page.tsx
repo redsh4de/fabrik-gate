@@ -11,13 +11,15 @@ export default function Home() {
       <Header/>
       <div className={styles.pageContent}>
         <div style={{flex: 1, gap: "1.5em", display: 'flex', flexDirection: 'column', justifyContent: "center"}}>
-            <Button bg="#000000" fg='#FFFFFF'>Marketplace now live</Button>
+            <Button bg="#000000" fg='#FFFFFF'>Marketplace: Coming soon.</Button>
             <h1>The new era of <br/>FabrikGate is here.</h1>
-            <p style={{fontWeight: 450}}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+            {/*<p style={{fontWeight: 450}}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>*/}
             <Link href="/inventory"><Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">Launch App</Button></Link>
         </div>
         <div style={{flex: 1, justifyContent: "center", alignItems: "center", display: "flex", background: "#F9F9F9", margin: "5em 0"}}>
-            <img src="images/photo.png" alt="Image"/>
+          <div>
+            <img src="images/photo.png" alt="Image" style={{width: "100%", height: "auto"}}/>
+          </div>
         </div>
       </div>
     </main>

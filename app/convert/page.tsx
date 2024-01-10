@@ -21,7 +21,7 @@ const Convert = () => {
                 <div className={styles.leftSide}>
                     <Button bg="#E4EDEC" fg='#000000'><b>Convert</b></Button>
                     <h1>Convert your tokens.<br/>From old to new.</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</p>
+                    <p>This only affects our holders who previously staked hausphases in the old contract and earned our old and outdated tokens.</p>
                     <div style={{display: 'flex', gap: '0.5em'}}>
                         <Link href="/marketplace"><Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">View Marketplace</Button> </Link>
                         <Link href="/inventory"><Button bg="#000000" fg='#FFFFFF'>View Inventory</Button></Link>

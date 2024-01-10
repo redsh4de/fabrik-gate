@@ -32,7 +32,7 @@ const StakingPage = ({ switchPage }: IStakingPageProps) => {
                 <div style={{display: 'flex', gap: '1.5em', flexDirection: 'column'}}>
                     <Button bg="#E4EDEC" fg='#000000'><b>Staking</b></Button>
                     <h1>Earn Rewards.<br/>Stake Your Modules.</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                    {/*<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>*/}
                     <div style={{display: 'flex', gap: '0.5em'}}>
                         <Link href="/marketplace"><Button bg="#FFFFFF" fg='#8E8E8E' border="1px solid #E0E1DA">View Marketplace</Button></Link>
                         <div onClick={() => switchPage()}><Button bg="#000000" fg='#FFFFFF'>View Inventory</Button></div>
