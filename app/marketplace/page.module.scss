@@ -19,3 +19,16 @@
     gap: 5em;
     padding-top: 2em;
 }
+
+@media screen and (max-width: 1360px) {
+    .main {
+      padding: 0 2em;
+    }
+  
+    .pageContent {
+      margin-top: 6em;
+      padding-bottom: 2em;
+      gap: 2em;
+      overflow: unset;
+    }
+}
